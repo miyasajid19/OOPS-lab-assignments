@@ -1,8 +1,3 @@
-// Define a class Complex with variables real and imaginary along with following:
-// (a) void setComplex (float, float) to initialize object values.
-// (b) void displayComplex() to show the complex number
-// (c) Pass and return objects to calculate sum of two complex numbers. Display the
-// sum.
 #include <iostream>
 #include <cstdlib>
 #include <string>
