@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 using namespace std;
+
 class Speedometer
 {
 protected:
@@ -9,10 +10,16 @@ protected:
 public:
     Speedometer() : speed(0.00) {}
     Speedometer(float speed) : speed(speed) {}
+
     void setSpeed(float speed) { this->speed = speed; }
     float getSpeed() { return this->speed; }
-    void Display() { cout << "Speed :: " << this->speed << "km/hr " << endl; }
+
+    void Display()
+    {
+        cout << "Speed: " << this->speed << " km/hr" << endl;
+    }
 };
+
 class Thermometer
 {
 protected:
@@ -21,10 +28,16 @@ protected:
 public:
     Thermometer() : temperature(13) {}
     Thermometer(float temperature) : temperature(temperature) {}
-    void settemperature(float temperature) { this->temperature = temperature; }
-    float gettemperature() { return this->temperature; }
-    void Display() { cout << "Temperature :: " << this->temperature << " degree centigrade" << endl; }
+
+    void setTemperature(float temperature) { this->temperature = temperature; }
+    float getTemperature() { return this->temperature; }
+
+    void Display()
+    {
+        cout << "Temperature: " << this->temperature << " degrees centigrade" << endl;
+    }
 };
+
 class FuelGauge
 {
 protected:
@@ -33,15 +46,22 @@ protected:
 public:
     FuelGauge() : fuel(0.00) {}
     FuelGauge(float fuel) : fuel(fuel) {}
-    void setfuel(float fuel) { this->fuel = fuel; }
-    float getfuel() { return this->fuel; }
-    void Display() { cout << "Fuel :: " << this->fuel << "Litre" << endl; }
+
+    void setFuel(float fuel) { this->fuel = fuel; }
+    float getFuel() { return this->fuel; }
+
+    void Display()
+    {
+        cout << "Fuel: " << this->fuel << " liters" << endl;
+    }
 };
+
 class CarDashboard : public Speedometer, public Thermometer, public FuelGauge
 {
 public:
     CarDashboard() {}
     CarDashboard(float speed, float temperature, float fuel) : Speedometer(speed), Thermometer(temperature), FuelGauge(fuel) {}
+
     void Display()
     {
         Speedometer::Display();
@@ -49,13 +69,13 @@ public:
         FuelGauge::Display();
     }
 };
+
 int main()
 {
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-#endif
-    CarDashboard lamborgini;
-    lamborgini.Display();
+    CarDashboard lamborghini(120.5, 25.6, 60.2);
+
+    cout << "Car Dashboard Information:" << endl;
+    lamborghini.Display();
+
     return EXIT_SUCCESS;
 }
