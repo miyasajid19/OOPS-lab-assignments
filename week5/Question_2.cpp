@@ -26,9 +26,9 @@ class Derived : protected Parent
 public:
     void display()
     {
-        cout << "a: " << this->a << endl; // Accessible (protected in Parent)
+        cout << "a: " << this->a << endl;  // Accessible (protected in Parent)
         // cout << this->b << endl;        // Not accessible, would cause an error
-        cout << "c: " << this->c << endl; // Accessible (protected in Derived)
+        cout << "c: " << this->c << endl;  // Accessible (protected in Derived)
     }
 
     void Modify(int a, int c)
@@ -41,11 +41,11 @@ public:
 int main()
 {
     Derived obj;
-    obj.display(); // Displays initial values of a and c
+    obj.display();      // Displays initial values of a and c
 
     // Modify values of a and c using Modify function
     obj.Modify(407, 432);
-    obj.display(); // Displays modified values of a and c
+    obj.display();      // Displays modified values of a and c
 
     return EXIT_SUCCESS;
 }
