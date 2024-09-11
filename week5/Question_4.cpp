@@ -5,7 +5,7 @@ using namespace std;
 class Animal
 {
 public:
-    virtual void eat()
+    void eat()
     {
         cout << "Animal eating..." << endl;
     }
@@ -14,7 +14,7 @@ public:
 class Dog : public Animal
 {
 public:
-    virtual void bark()
+    void bark()
     {
         cout << "Dog barking..." << endl;
     }
@@ -24,7 +24,7 @@ public:
 class Father
 {
 public:
-    virtual void work()
+    void work()
     {
         cout << "Father working..." << endl;
     }
@@ -33,7 +33,7 @@ public:
 class Mother
 {
 public:
-    virtual void cook()
+    void cook()
     {
         cout << "Mother cooking..." << endl;
     }
@@ -42,7 +42,7 @@ public:
 class Child : public Father, public Mother
 {
 public:
-    virtual void study()
+    void study()
     {
         cout << "Child studying..." << endl;
     }
@@ -52,7 +52,7 @@ public:
 class Vehicle
 {
 public:
-    virtual void start()
+    void start()
     {
         cout << "Vehicle started" << endl;
     }
@@ -61,7 +61,7 @@ public:
 class Car : public Vehicle
 {
 public:
-    virtual void drive()
+    void drive()
     {
         cout << "Car driving..." << endl;
     }
@@ -70,7 +70,7 @@ public:
 class SportsCar : public Car
 {
 public:
-    virtual void race()
+    void race()
     {
         cout << "Sports car racing..." << endl;
     }
@@ -80,7 +80,7 @@ public:
 class Shape
 {
 public:
-    virtual void draw()
+    void draw()
     {
         cout << "Drawing shape..." << endl;
     }
@@ -89,7 +89,7 @@ public:
 class Circle : public Shape
 {
 public:
-    virtual void draw()
+    void draw()
     {
         cout << "Drawing circle..." << endl;
     }
@@ -98,7 +98,7 @@ public:
 class Rectangle : public Shape
 {
 public:
-    virtual void draw()
+    void draw()
     {
         cout << "Drawing rectangle..." << endl;
     }
@@ -108,7 +108,7 @@ public:
 class Person
 {
 public:
-    virtual void walk()
+    void walk()
     {
         cout << "Person walking..." << endl;
     }
@@ -117,7 +117,7 @@ public:
 class Employee : public Person
 {
 public:
-    virtual void work()
+    void work()
     {
         cout << "Employee working..." << endl;
     }
@@ -126,7 +126,7 @@ public:
 class Student : public Person
 {
 public:
-    virtual void study()
+    void study()
     {
         cout << "Student studying..." << endl;
     }
@@ -135,7 +135,7 @@ public:
 class TeachingAssistant : public Employee, public Student
 {
 public:
-    virtual void assist()
+    void assist()
     {
         cout << "Teaching Assistant assisting..." << endl;
     }
