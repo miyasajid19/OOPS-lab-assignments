@@ -44,9 +44,12 @@ public:
     }
     void lend(int id, string memberType)
     {
-        this->memberId = id;
-        this->memberType = memberType;
-        this->availablity = false;
+        if (isAvailable())
+        {
+            this->memberId = id;
+            this->memberType = memberType;
+            this->availablity = false;
+        }
     }
     bool isAvailable()
     {
@@ -100,11 +103,10 @@ public:
 };
 class Member
 {
-protected:
-    string name;
-    vector<string> borrowedBook;
-
 public:
+    string name;
+    vector<int> borrowedBook;
+
     Member(string name)
     {
         this->name = name;
@@ -116,11 +118,10 @@ public:
 };
 class StudentMember : public Member
 {
-private:
+public:
     static int studentcount;
     int StudentId;
 
-public:
     StudentMember(string name) : Member(name)
     {
         this->StudentId = studentcount++;
@@ -136,14 +137,14 @@ public:
 class FacultyMember : public Member
 {
 
-private:
+public:
     static int facultyCount;
     int FacultyMemberId;
-
-public:
+    string memberType;
     FacultyMember(string name) : Member(name)
     {
         this->FacultyMemberId = facultyCount++;
+        this->memberType = "Faculty";
     }
     void Display()
     {
@@ -180,17 +181,57 @@ int FacultyMember ::facultyCount = 1;
 int StudentMember ::studentcount = 1;
 int main()
 {
-    StudentMember std1("sajid miya");
-    std1.Display();
-    StudentMember std2("sajid miya");
-    std2.Display();
-    StudentMember std3("sajid miya");
-    std3.Display();
-    FacultyMember fact1("pramisha karki");
-    fact1.Display();
-    FacultyMember fact2("pramisha karki");
-    fact2.Display();
-    FacultyMember fact3("pramisha karki");
-    fact3.Display();
+    // Creating student members
+    StudentMember student1("Alice Johnson");
+    StudentMember student2("Bob Smith");
+
+    // Creating faculty members
+    FacultyMember faculty1("Dr. Sarah Lee");
+    FacultyMember faculty2("Prof. John Doe");
+
+    // Displaying student members
+    cout << "Student Members:\n";
+    student1.Display();
+    student2.Display();
+
+    // Displaying faculty members
+    cout << "\nFaculty Members:\n";
+    faculty1.Display();
+    faculty2.Display();
+
+    // Creating books
+    FictionBook fictionBook1("The Great Adventure", "Jane Austen", "1234567890");
+    FictionBook fictionBook2("Mystery of the Lost City", "Arthur Conan Doyle", "0987654321");
+    NonFictionBook nonFictionBook1("The Art of War", "Sun Tzu", "1122334455", "Military Strategy");
+    NonFictionBook nonFictionBook2("Sapiens: A Brief History of Humankind", "Yuval Noah Harari", "5566778899", "History");
+
+    // Displaying books
+    cout << "\nBooks in the Library:\n";
+    fictionBook1.Display();
+    fictionBook2.Display();
+    nonFictionBook1.Display();
+    nonFictionBook2.Display();
+
+    // Lending books to members
+    cout << "\nLending books...\n";
+    fictionBook1.lend(faculty1.FacultyMemberId, "Faculty");
+    nonFictionBook1.lend(student1.StudentId, "Student");
+
+    // Adding borrowed books to members' borrowed lists
+    faculty1.borrowedBook.push_back(fictionBook1.bookId);
+    student1.borrowedBook.push_back(nonFictionBook1.bookId);
+
+    // Displaying the status of borrowed books
+    cout << "\nHas faculty1 borrowed 'The Great Adventure'? " << boolalpha << HasBorrowed(faculty1, fictionBook1) << endl;
+    cout << "Has student1 borrowed 'The Art of War'? " << boolalpha << HasBorrowed(student1, nonFictionBook1) << endl;
+
+    // Displaying updated book and member information
+    cout << "\nUpdated Library Information:\n";
+    fictionBook1.Display();
+    nonFictionBook1.Display();
+
+    student1.Display();
+    faculty1.Display();
+
     return EXIT_SUCCESS;
 }
