@@ -92,7 +92,7 @@ public:
         this->subject = subject;
     }
     ~NonFictionBook() {}
-        void Display()
+    void Display()
     {
         Book::Display();
         cout << subject << endl;
@@ -102,40 +102,34 @@ class Member
 {
 protected:
     string name;
-    static int MemberId;
     vector<string> borrowedBook;
 
 public:
     Member(string name)
     {
         this->name = name;
-        this->MemberId = MemberId++;
     }
     void Display()
     {
-        cout<<this->MemberId<<"\t";
-        cout<<this->name<<"\t";
+        cout << this->name << "\t";
     }
 };
 class StudentMember : public Member
 {
 private:
-    static int StudentId;
+    static int studentcount;
+    int StudentId;
 
 public:
     StudentMember(string name) : Member(name)
     {
-        this->StudentId = StudentId++;
+        this->StudentId = studentcount++;
     }
     void Display()
     {
         Member::Display();
-        cout<<"Student"<<endl;
-        cout<<this->StudentId<<endl;
-    }
-    void LendBook(int id)
-    {
-        
+        cout << "Student\t";
+        cout << this->StudentId << endl;
     }
     friend bool HasBorrowed(StudentMember, Book);
 };
@@ -143,18 +137,19 @@ class FacultyMember : public Member
 {
 
 private:
-    static int FacultyMemberId;
+    static int facultyCount;
+    int FacultyMemberId;
 
 public:
     FacultyMember(string name) : Member(name)
     {
-        this->FacultyMemberId = FacultyMemberId++;
+        this->FacultyMemberId = facultyCount++;
     }
-        void Display()
+    void Display()
     {
         Member::Display();
-        cout<<"Faculty\t";
-        cout<<FacultyMemberId<<endl;
+        cout << "Faculty\t";
+        cout << FacultyMemberId << endl;
     }
     friend bool HasBorrowed(FacultyMember, Book);
 };
@@ -162,7 +157,7 @@ bool HasBorrowed(StudentMember const student, Book const book)
 {
     for (auto x : student.borrowedBook)
     {
-        if (book.availablity == false and book.memberId == student.MemberId and book.memberType == "student")
+        if (book.availablity == false and book.memberId == student.StudentId and book.memberType == "student")
         {
             return true;
         }
@@ -173,23 +168,29 @@ bool HasBorrowed(FacultyMember const Faculty, Book const book)
 {
     for (auto x : Faculty.borrowedBook)
     {
-        if (book.availablity == false and book.memberId == Faculty.MemberId and book.memberType == "Faculty")
+        if (book.availablity == false and book.memberId == Faculty.FacultyMemberId and book.memberType == "Faculty")
         {
             return true;
         }
     }
     return false;
 }
-int Member ::MemberId = 1;
 int Book ::countBook = 1;
+int FacultyMember ::facultyCount = 1;
+int StudentMember ::studentcount = 1;
 int main()
 {
-    // #ifndef ONLINE_JUDGE
-    //     freopen("input.txt", "r", stdin);
-    //     freopen("output.txt", "w", stdout);
-    // #endif
-    cout << "all i want was the love and what i get is the pain" << endl;
-    cout << "the moment had passed and we remained like strangers among the sea of graduates";
-
+    StudentMember std1("sajid miya");
+    std1.Display();
+    StudentMember std2("sajid miya");
+    std2.Display();
+    StudentMember std3("sajid miya");
+    std3.Display();
+    FacultyMember fact1("pramisha karki");
+    fact1.Display();
+    FacultyMember fact2("pramisha karki");
+    fact2.Display();
+    FacultyMember fact3("pramisha karki");
+    fact3.Display();
     return EXIT_SUCCESS;
 }
