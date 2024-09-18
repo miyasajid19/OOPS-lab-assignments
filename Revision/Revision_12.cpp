@@ -1,8 +1,8 @@
 #include <iostream>
 #include <cstdlib>
 using namespace std;
-class X
-{
+
+class X {
     int a;
 
 protected:
@@ -10,23 +10,28 @@ protected:
 
 public:
     int c;
-    X():a(0),b(0),c(0){}
+    X() : a(0), b(0), c(0) {}
+    
+    // Member functions
     void display();
-    void set(int);
+    void set(int a1, int b1, int c1);
 };
-void X::display()
-{
+
+// Member function definitions
+void X::display() {
     cout << this->a << "\t" << this->b << "\t" << this->c << endl;
 }
-void X:: set(int a1, int b1, int c1)
-{
-    a = a1;
-    b = b1;
-    c = c1;
+
+void X::set(int a1, int b1, int c1) {
+    this->a = a1;
+    this->b = b1;
+    this->c = c1;
 }
-int main()
-{
-X a;
+
+int main() {
+    X obj;
+    obj.set(5, 10, 15);  // Set values to the members of X
+    obj.display();       // Display the values of the members of X
 
     return EXIT_SUCCESS;
 }
