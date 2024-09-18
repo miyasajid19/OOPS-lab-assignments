@@ -2,39 +2,45 @@
 #include <cstdlib>
 #include <vector>
 using namespace std;
+
 class X
 {
-    vector<X> objects;
+    static vector<X> objects; // Declare static vector to hold all objects
 
 public:
     string name;
     int age;
     static int count;
     int id;
-    X(string name, int age)
+
+    X(string name, int age) : name(name), age(age), id(count++)
     {
-        this->name = name;
-        this->age = age;
-        this->id = count++;
-        objects.push_back(*this);
+        objects.push_back(*this); // Store a copy of the current object
     }
-    void print()
-    {
+
+    void print() const
+    { // Mark print as const
         cout << this->id << "\t" << this->name << "\t" << this->age << endl;
     }
+
     static void display()
     {
-        for (auto x : objects)
-        {
-            x.display();
+        for (const auto &x : objects)
+        {              // Use const reference to avoid copying
+            x.print(); // Call the print() method
         }
     }
 };
+
+// Initialize static members
+int X::count = 0;
+vector<X> X::objects;
+
 int main()
 {
-    X a("sajid miya", 432);
-    X b("Pramisha karki", 407);
-    X c("pramisajid", 407432);
-    X ::display();
+    X a("obito Uchiha", 39);
+    X b("Rin Nohara", 13);
+    X c("Kakashi Hatake", 432);
+    X::display();
     return EXIT_SUCCESS;
 }
