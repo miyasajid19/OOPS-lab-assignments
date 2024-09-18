@@ -26,14 +26,14 @@ public:
     }
     friend int add(X, Y);
 };
-int add(X a,Y b)
+int add(X a, Y b)
 {
-    return a.a+b.a;
+    return a.a + b.a;
 }
 int main()
 {
     X x;
     Y y;
-cout<<add(x,y);
+    cout << add(x, y);
     return EXIT_SUCCESS;
 }
