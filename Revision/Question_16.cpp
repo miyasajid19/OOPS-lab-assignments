@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cstdlib>
-using namespace std;
-
+using namespace std; // this is implemented in order to reduce the :: (scope resolution pollution)
 namespace NarutoUzumaki
 {
     void display()
