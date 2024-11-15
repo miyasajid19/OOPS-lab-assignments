@@ -29,8 +29,8 @@ public:
     {
         float real = this->real + z.real;
         float imaginary = this->imaginary + z.imaginary;
-        Complex ans(real, imaginary);
-        return ans;
+        return Complex(real, imaginary);
+        // return ans;
     }
     Complex sum(Complex z)
     {
@@ -42,10 +42,10 @@ public:
 };
     int main()
     {
-#ifndef JUDGE_ONLINE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-#endif
+// #ifndef JUDGE_ONLINE
+//         freopen("input.txt", "r", stdin);
+//         freopen("output.txt", "w", stdout);
+// #endif
         Complex a;
         a.setComplex(3.5, -2.5);
 
@@ -60,7 +60,7 @@ public:
         cout << "Complex number c: ";
         c.displayComplex();
 
-        Complex sum1 = a + b;
+        Complex sum1 = a + b+c+a+b;
         cout << "Sum of a and b: ";
         sum1.displayComplex();
 
