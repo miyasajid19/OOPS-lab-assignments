@@ -54,7 +54,7 @@ public:
     }
 };
 
-int Config::no_of_players = 0;
+int Config::no_of_players = -1;
 
 int main()
 {
