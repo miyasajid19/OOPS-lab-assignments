@@ -13,10 +13,10 @@ public:
 };
 int main()
 {
-// #ifndef ONLINE_JUDGE
-//     freopen("input.txt", "r", stdin);
-//     freopen("output.txt", "w", stdout);
-// #endif
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
     solution soln;
     soln.show(100, "hello hello");
     soln.show('k', 1500);
