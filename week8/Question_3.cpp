@@ -1,8 +1,3 @@
-//  Write the template for the following function in C++ and execute it for various datatypes
-
-// int MyMax(int a, int b){
-// return x>y?x:y;
-// }
 #include <iostream>
 #include <cstdlib>
 using namespace std;
